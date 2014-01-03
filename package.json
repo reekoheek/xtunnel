@@ -1,0 +1,22 @@
+{
+  "name": "xtunnel",
+  "version": "0.0.1",
+  "description": "XTunnel is http tunnel",
+  "main": "lib/tunnel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin" : { 
+    "tunnel": "./bin/tunnel",
+    "serve": "./bin/serve"
+  },
+  "author": "Ganesha <reekoheek@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "optimist": "~0.6.0",
+    "socket.io": "~0.9.16",
+    "socket.io-client": "~0.9.16",
+    "hashids": "~0.3.3",
+    "request": "~2.30.0"
+  }
+}

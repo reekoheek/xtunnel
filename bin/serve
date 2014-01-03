@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+(function() {
+    "use strict";
+
+    var tunnel = require('../lib/tunnel'),
+        argv = require('optimist').argv;
+
+    var options = {
+        main: {
+            domain: argv.d || argv.domain || argv._[0] || null,
+            port: argv.p || argv.port || 8080,
+            service: argv.s || argv.service || 'http'
+        }
+    };
+
+    tunnel.createServer(options).listen();
+
+})();

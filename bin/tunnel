@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+(function() {
+    "use strict";
+
+    var tunnel = require('../lib/tunnel'),
+        url = require('url'),
+        argv = require('optimist').argv,
+        server = 'http://localhost:8080';
+
+    var parsed = url.parse(argv._[0]),
+        domain = argv._[1] || null;
+    parsed.protocol = parsed.protocol || 'http:';
+    parsed.hostname = parsed.hostname || argv._[0];
+    parsed.port = parsed.port || 80;
+
+    var options = {
+            server: server,
+            tunnel: {}
+        };
+
+    if (parsed.protocol) {
+        options.tunnel.main = {
+            type: parsed.protocol.substr(0, parsed.protocol.length-1),
+            host: parsed.hostname,
+            port: parsed.port,
+            domain: domain
+        };
+    }
+
+    var client = tunnel.createClient(options).connect();
+})();
